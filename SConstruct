@@ -63,6 +63,9 @@ if int(ARGUMENTS.get('rpath', 0)):
     baseenv.Replace(ADD_INSTALL_RPATH='1')
 baseenv.AddMethod(podd_util.InstallWithRPATH)
 # Scons 4.1.0 sets this to '-Wl,rpath=' which the Xcode 12 linker doesn't understand
+
+print('platform = ',baseenv['PLATFORM'])
+
 if baseenv['PLATFORM'] == 'darwin':
     baseenv.Replace(RPATHPREFIX='-Wl,-rpath,')
 
